@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 160 20% 4%;
+    --foreground: 160 20% 95%;
+
+    --card: 160 15% 8%;
+    --card-foreground: 160 20% 95%;
+
+    --popover: 160 15% 8%;
+    --popover-foreground: 160 20% 95%;
+
+    --primary: 160 60% 45%;
+    --primary-foreground: 160 20% 4%;
+
+    --secondary: 200 50% 20%;
+    --secondary-foreground: 200 20% 90%;
+
+    --muted: 160 10% 15%;
+    --muted-foreground: 160 10% 55%;
+
+    --accent: 280 40% 50%;
+    --accent-foreground: 280 20% 95%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 160 60% 45%;
+
+    --radius: 1rem;
+
+    /* Custom liquid glass tokens */
+    --glass-bg: 160 15% 10%;
+    --glass-border: 160 20% 25%;
+    --glass-blur: 50px;
+    --neon-green: 160 100% 50%;
+    --neon-blue: 210 100% 55%;
+    --neon-cyan: 185 100% 50%;
+    --emerald-glow: 155 80% 40%;
+    --deep-blue: 220 70% 25%;
+    --forest-dark: 160 30% 6%;
+
+    --sidebar-background: 160 15% 8%;
+    --sidebar-foreground: 160 20% 95%;
+    --sidebar-primary: 160 60% 45%;
+    --sidebar-primary-foreground: 160 20% 4%;
+    --sidebar-accent: 160 15% 15%;
+    --sidebar-accent-foreground: 160 20% 95%;
+    --sidebar-border: 160 15% 18%;
+    --sidebar-ring: 160 60% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .liquid-glass {
+    background: hsla(var(--glass-bg) / 0.4);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsla(var(--glass-border) / 0.3);
+    box-shadow:
+      0 8px 32px hsla(var(--neon-green) / 0.08),
+      inset 0 1px 0 hsla(var(--foreground) / 0.05);
+  }
+
+  .liquid-glass-strong {
+    background: hsla(var(--glass-bg) / 0.6);
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+    border: 1px solid hsla(var(--glass-border) / 0.4);
+    box-shadow:
+      0 16px 48px hsla(var(--neon-green) / 0.12),
+      inset 0 1px 0 hsla(var(--foreground) / 0.08);
+  }
+
+  .neon-glow-green {
+    box-shadow:
+      0 0 20px hsla(var(--neon-green) / 0.3),
+      0 0 60px hsla(var(--neon-green) / 0.1);
+  }
+
+  .neon-glow-blue {
+    box-shadow:
+      0 0 20px hsla(var(--neon-blue) / 0.3),
+      0 0 60px hsla(var(--neon-blue) / 0.1);
+  }
+
+  .neon-text-green {
+    text-shadow:
+      0 0 10px hsla(var(--neon-green) / 0.5),
+      0 0 40px hsla(var(--neon-green) / 0.2);
+  }
+
+  .neon-text-blue {
+    text-shadow:
+      0 0 10px hsla(var(--neon-blue) / 0.5),
+      0 0 40px hsla(var(--neon-blue) / 0.2);
+  }
+
+  .text-clip-transparent {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glass-sphere {
+    background: radial-gradient(
+      circle at 30% 30%,
+      hsla(var(--neon-green) / 0.15),
+      hsla(var(--glass-bg) / 0.4) 50%,
+      hsla(var(--neon-blue) / 0.05) 100%
+    );
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid hsla(var(--glass-border) / 0.3);
+    box-shadow:
+      0 8px 32px hsla(var(--neon-green) / 0.1),
+      inset 0 -4px 12px hsla(var(--neon-green) / 0.05),
+      inset 0 2px 4px hsla(var(--foreground) / 0.08);
+  }
+
+  .crack-effect {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cpath d='M200 0 L210 120 L280 180 L200 200 L150 280 L200 400' stroke='%23ffffff' stroke-width='2' fill='none' opacity='0.6'/%3E%3Cpath d='M210 120 L300 100' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.4'/%3E%3Cpath d='M150 280 L80 320' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes bubble-float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes slot-spin {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes oxygen-drain {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
